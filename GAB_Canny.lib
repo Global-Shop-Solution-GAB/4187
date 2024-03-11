@@ -1,0 +1,56 @@
+Program.Sub.Preflight.Start
+	V.Global.bCannyUser.Declare
+Program.Sub.Preflight.End
+
+Program.Sub.CannyCheckUser.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sCannyMsg.Declare
+	
+	F.Intrinsic.String.Build("The current user does not have a matching email address associated in the ServiceWeb.{0}Please contact your Account Rep if you need assistance to get this setup.",V.Ambient.NewLine,V.Local.sCannyMsg)
+
+	Gui.[V.Args.Form].cmdCanny.Create(Button)
+	Gui.[V.Args.Form].cmdCanny.Size(450,375)
+	Gui.[V.Args.Form].cmdCanny.Position(9660,45)
+	Gui.[V.Args.Form].cmdCanny.Anchor(1)
+	Gui.[V.Args.Form].cmdCanny.Event(Click,CannySendFeedbackDashboards)
+	
+	F.Global.Canny.CheckUser(V.Global.bCannyUser)
+	F.Intrinsic.Control.If(V.Global.bCannyUser)
+		Gui.[V.Args.Form].cmdCanny.Caption("canny-on25")
+		Gui.[V.Args.Form].cmdCanny.ToolTip("Send Feedback")
+	F.Intrinsic.Control.Else
+		Gui.[V.Args.Form].cmdCanny.Caption("canny-off25")
+		Gui.[V.Args.Form].cmdCanny.ToolTip(V.Local.sCannyMsg)
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.CatchWhen(390500)
+		V.Global.bCannyUser.Set(False)
+		Gui.[V.Args.Form].cmdCanny.Caption("canny-off25")
+		Gui.[V.Args.Form].cmdCanny.ToolTip(V.Local.sCannyMsg)
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.CannyCheckUser.End
+
+Program.Sub.CannySendFeedbackDashboards.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	V.Local.iRet.Declare
+
+	F.Intrinsic.Control.If(V.Global.bCannyUser)
+		F.Global.Canny.SendFeedback("Dashboards",V.Local.iRet)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("The current user does not have a matching email address associated in the ServiceWeb. Please contact your Account Rep if you need assistance to get this setup.","Send Feedback")
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.CannySendFeedbackDashboards.End
