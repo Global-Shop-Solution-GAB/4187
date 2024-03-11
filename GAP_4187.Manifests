@@ -1,0 +1,4 @@
+1GAB_PO_CONFCHK$!$2015.3$!$3$!$False$!$$!$0%!%2PURCHASE_ORDER#!#CHAR(7)#!#False#!#False#!#False#!#$!$CONF#!#CHAR(1)#!#False#!#False#!#False#!#$!$GS_USER#!#CHAR(8)#!#False#!#False#!#False#!#$!$DATE_CONF#!#DATE
+#!#False#!#False#!#False#!#$!$%!%3GAB_PO_CONFCHK00#!#GAB_PO_CONFCHK#!#False#!#PURCHASE_ORDER#!#$!$%!%%!%5GAP_4187%!%^*!*^1GAB_4163_PO_NOTES$!$2015.3$!$3$!$False$!$$!$0%!%2PO#!#CHAR(7)#!#False#!#False#!#False#!#$!$POLINE#!#CHAR(3)#!#False#!#False#!#False#!#$!$NOTES#!#LONGVARCHAR
+#!#False#!#False#!#False#!#$!$%!%3GAB_4163_PO_NOTES01#!#GAB_4163_PO_NOTES#!#False#!#PO#!#$!$GAB_4163_PO_NOTES02#!#GAB_4163_PO_NOTES#!#False#!#POLINE#!#$!$%!%%!%5GAP_4187%!%^*!*^1GAB_4187_VRM_NOTES$!$2015.3$!$3$!$False$!$$!$0%!%2VENDOR#!#CHAR(30)#!#False#!#False#!#False#!#$!$NOTE#!#CHAR(50)#!#False#!#False#!#False#!#$!$ADDITIONAL_NOTES#!#LONGVARCHAR
+#!#False#!#False#!#False#!#$!$%!%3GAB_4187_VRM_NOTES01#!#GAB_4187_VRM_NOTES#!#False#!#VENDOR#!#$!$%!%%!%5GAP_4187%!%^*!*^
